@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Clock</title>
-    <link href="styles.css" rel="stylesheet">
+  
 </head>
 <body>
     <div class="clock">
@@ -15,6 +15,45 @@
             <div class="hand hand-secs"></div>
         </div>
     </div>
-    <script src="app.js" type="text/javascripta"></script>
+    <style>
+        .hand {
+    width: 50%;
+    height: 6px;
+    background: black;
+    position: absolute;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 0.5s;
+    transition-timing-function:cubic-bezier(0, 2.97, 0.58, 1);
+}
+    </style>
+    <script>
+        var secondHand = document.querySelector(".hand-secs");
+        var minHand = document.querySelector(".hand-mins");
+        var hourHand = document.querySelector(".hand-hour");
+
+        function setDate()
+{
+    const now =new Date();
+    const seconds = now.getSeconds();
+    const secondsDeg = ((seconds/60)*360)+90;
+    secondHand.style.transform = `rotate(${secondsDeg}deg)`;
+
+
+
+    const minutes = now.getMinutes();
+    const minutesDeg = ((minutes/60)*360)+90;
+    minHand.style.transform = `rotate(${minutesDeg}deg)`;
+    
+
+    const hours = now.getHours();
+    const hoursDeg = ((hours/60)*360)+90;
+    hourHand.style.transform = `rotate(${hoursDeg}deg)`;
+
+}
+setInterval(setDate,1000);
+
+    </script>
 </body>
 </html>
