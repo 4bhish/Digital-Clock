@@ -49,7 +49,7 @@
 
     const hours = now.getHours();
     const hoursDeg = ((hours/60)*360)+90;
-    hourHand.style.transform = `rotate(${hoursDeg}deg)`;
+    minHand.style.transform = `rotate(${minutesDeg}deg)`;
 
 }
 setInterval(setDate,1000);
